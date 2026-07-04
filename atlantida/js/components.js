@@ -83,8 +83,16 @@ logoFallback.style.display = 'grid';
 menuGroups.forEach(function (item) {
 menu.appendChild(buildMenuItem(item));
 });
+
+const brandBox = createElement('div', { className: 'brand-box' });
+const menuBox = createElement('div', { className: 'menu-box' });
+
 brand.append(logoImg, logoFallback);
-nav.append(brand, hamburger, menu);
+brandBox.appendChild(brand);
+menuBox.appendChild(menu);
+
+nav.append(brandBox, menuBox, hamburger);
+
 header.appendChild(nav);
 headerMount.appendChild(header);
 }
