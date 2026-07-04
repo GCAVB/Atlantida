@@ -84,7 +84,7 @@ logoFallback.style.display = 'grid';
 menuGroups.forEach(function (item) {
 menu.appendChild(buildMenuItem(item));
 });
-brand.append(logoImg, logoFallback, document.createTextNode('Atlántida'));
+brand.append(logoImg, logoFallback);
 nav.append(brand, hamburger, menu);
 header.appendChild(nav);
 headerMount.appendChild(header);
