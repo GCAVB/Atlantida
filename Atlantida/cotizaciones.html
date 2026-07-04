@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Solicita una cotización para impresiones, fotocopias o digitalización en Atlántida.">
+  <title>Atlántida | Cotizaciones</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="site-header" data-active="cotizaciones"></div>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Cotizaciones</h1>
+        <p>Solicita una cotización para impresiones, fotocopias o digitalización.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2>Formulario de cotización</h2>
+        <form class="form" data-form="cotizacion" action="https://formsubmit.co/fotocopia.atlantida@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nueva cotización desde Atlántida">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <label>Nombre<input type="text" name="nombre" required></label>
+          <label>Correo<input type="email" name="correo" required></label>
+          <label>Servicio solicitado
+            <select name="servicio" required>
+              <option value="">Selecciona una opción</option>
+              <option value="Impresiones">Impresiones</option>
+              <option value="Fotocopias">Fotocopias</option>
+              <option value="Digitalización">Digitalización</option>
+              <option value="Material académico">Material académico</option>
+            </select>
+          </label>
+          <label>Descripción de la solicitud<textarea name="mensaje" rows="6" minlength="20" required></textarea></label>
+          <div class="message" role="status" aria-live="polite"></div>
+          <button class="btn" type="submit">Enviar cotización</button>
+          <button class="btn secondary" type="button" data-clear>Limpiar</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <button class="top-btn" aria-label="Volver arriba">↑</button>
+  <script src="js/components.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
