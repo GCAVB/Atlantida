@@ -1,5 +1,5 @@
 /* Variables globales de color, fondo y sombras para mantener consistencia visual en todo el sitio. */
-:root { --azul:#0f4761; --azul-claro:#44f4bc; --celeste:#e1bbc6; --gris:#f4f6f8; --texto:#263238; --blanco:#ffffff; --sombra:0 8px 24px rgba(0,0,0,.10); }
+:root { --azul:#0f4761; --azul-claro:#44f4bc; --celeste:#e1bbc6; --gris:#f4f6f8; --texto:#161d21; --blanco:#ffffff; --sombra:0 8px 24px rgba(0,0,0,.10); }
 
 /* Reinicio básico para evitar diferencias de márgenes entre navegadores. */
 * { box-sizing:border-box; margin:0; padding:0; }
