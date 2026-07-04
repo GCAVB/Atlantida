@@ -13,7 +13,6 @@ const pagePath = function (page) { return basePath + page; };
 const assetPath = function (asset) { return basePath + asset; };
 
 const menuGroups = [
-{ key: 'inicio', text: 'Inicio', href: homePath },
 { key: 'servicios', text: 'Servicios', children: [
 { key: 'impresiones', text: 'Impresiones', href: pagePath('impresiones.html') },
 { key: 'fotocopias', text: 'Fotocopias', href: pagePath('fotocopias.html') },
