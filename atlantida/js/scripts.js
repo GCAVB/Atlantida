@@ -116,7 +116,7 @@ const email = form.querySelector('[name="correo"]');
 const text = form.querySelector('textarea');
 const service = form.querySelector('[name="servicio"]');
 const isQuotationForm = form.dataset.form === 'cotizacion';
-const minTextLength = isQuotationForm ? 20 : 10;
+const minTextLength = isQuotationForm ? 50 : 40;
 
 const nameValue = name ? name.value.trim() : '';
 const emailValue = email ? email.value.trim() : '';
@@ -124,7 +124,7 @@ const textValue = text ? text.value.trim() : '';
 const serviceValue = service ? service.value.trim() : 'ok';
 
 if (!nameValue || !emailValue || !isValidEmail(emailValue) || !textValue || textValue.length < minTextLength || !serviceValue) {
-const textLabel = isQuotationForm ? 'la descripción debe tener al menos 20 caracteres' : 'el mensaje debe tener al menos 10 caracteres';
+const textLabel = isQuotationForm ? 'la descripción debe tener al menos 40 caracteres' : 'el mensaje debe tener al menos 10 caracteres';
 showMessage(msg, `Revisa los campos obligatorios. El correo debe ser válido y ${textLabel}.`, 'error');
 return;
 }

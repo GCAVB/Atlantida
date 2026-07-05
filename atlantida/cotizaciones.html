@@ -20,9 +20,7 @@
       <div class="container">
         <h2>Formulario de cotización</h2>
         
-        <!-- <form class="form" data-form="cotizacion" action="https://formsubmit.co/fotocopiaatlantida@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Nueva cotización desde Atlántida"> -->
-          <form class="form" data-form="cotizacion" name="cotizacion" method="POST" data-netlify="true" netlify-honeypot="bot-field" netlify>
+          <form class="form" data-form="cotizacion" name="cotizacion" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" netlify>
           <input type="hidden" name="form-name" value="cotizacion">
           <input type="hidden" name="_template" value="table">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
@@ -37,7 +35,8 @@
               <option value="Material académico">Material académico</option>
             </select>
           </label>
-          <label>Descripción de la solicitud<textarea name="mensaje" rows="6" minlength="20" required></textarea></label>
+          <label>Descripción de la solicitud<textarea name="mensaje" rows="6" minlength="40" required></textarea></label>
+          <div data-netlify-recaptcha="true"></div>
           <div class="message" role="status" aria-live="polite"></div>
           <button class="btn" type="submit">Enviar cotización</button>
           <button class="btn secondary" type="button" data-clear>Limpiar</button>

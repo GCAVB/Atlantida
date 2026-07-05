@@ -101,9 +101,9 @@ if (footerMount) {
 footerMount.replaceChildren();
 const footer = createElement('footer', { className: 'footer' });
 const grid = createElement('div', { className: 'container grid' });
-['Atlántida', 'Contacto', 'Enlaces rápidos'].forEach(function (title, index) {
+['Atlántida', 'Atlantida', 'Enlaces rápidos'].forEach(function (title, index) {
 const column = document.createElement('div');
-const text = index === 0 ? 'Impresiones, fotocopias, digitalización y material académico digital.' : index === 1 ? 'fotocopia.atlantida@gmail.com' : 'Inicio · Servicios · Papeo · Libros · Resúmenes · Cotizaciones · Contacto';
+const text = index === 0 ? 'Impresiones, fotocopias, digitalización y material académico digital.' : index === 1 ? 'Fotocopiadora Atlantida servicios de calidad.' : 'Inicio · Servicios · Papeo · Libros · Resúmenes · Cotizaciones · Contacto';
 column.append(createElement('h3', { text: title }), createElement('p', { text: text }));
 grid.appendChild(column);
 });
