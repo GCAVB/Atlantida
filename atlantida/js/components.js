@@ -18,17 +18,17 @@ const menuGroups = [
 { key: 'fotocopias', text: 'Fotocopias', href: pagePath('fotocopias.html') },
 { key: 'digitalizacion', text: 'Digitalización', href: pagePath('digitalizacion.html') }
 ] },
-{ key: 'papeo', text: 'Papeo', href: pagePath('papeo.html') },
-{ key: 'libros', text: 'Libros', href: pagePath('libros.html'), children: [
-{ key: 'cienciaslib', text: 'Ciencias', href: pagePath('cienciaslib.html') },
-{ key: 'historialib', text: 'Historia', href: pagePath('historialib.html') },
-{ key: 'literaturalib', text: 'Literatura', href: pagePath('literaturalib.html') }
-] },
-{ key: 'resumenes', text: 'Resúmenes', href: pagePath('resumenes.html'), children: [
-{ key: 'cienciasres', text: 'Ciencias', href: pagePath('cienciasres.html') },
-{ key: 'historiares', text: 'Historia', href: pagePath('historiares.html') },
-{ key: 'literaturares', text: 'Literatura', href: pagePath('literaturares.html') }
-] },
+// { key: 'papeo', text: 'Papeo', href: pagePath('papeo.html') },
+// { key: 'libros', text: 'Libros', href: pagePath('libros.html'), children: [
+// { key: 'cienciaslib', text: 'Ciencias', href: pagePath('cienciaslib.html') },
+// { key: 'historialib', text: 'Historia', href: pagePath('historialib.html') },
+// { key: 'literaturalib', text: 'Literatura', href: pagePath('literaturalib.html') }
+// ] },
+// { key: 'resumenes', text: 'Resúmenes', href: pagePath('resumenes.html'), children: [
+// { key: 'cienciasres', text: 'Ciencias', href: pagePath('cienciasres.html') },
+// { key: 'historiares', text: 'Historia', href: pagePath('historiares.html') },
+// { key: 'literaturares', text: 'Literatura', href: pagePath('literaturares.html') }
+// ] },
 { key: 'cotizaciones', text: 'Cotizaciones', href: pagePath('cotizaciones.html') },
 { key: 'contactanos', text: 'Contáctanos', href: pagePath('contactanos.html') }
 ];

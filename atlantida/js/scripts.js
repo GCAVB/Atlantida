@@ -130,7 +130,7 @@ return;
 }
 
 showMessage(msg, 'Solicitud validada correctamente. Enviando información...', 'ok');
-setTimeout(() => HTMLFormElement.prototype.submit.call(form), 500);
+setTimeout(() => form.submit(), 500);
 });
 });
 });
