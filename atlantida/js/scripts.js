@@ -96,6 +96,45 @@ element.className = 'message';
 const isValidEmail = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 
 document.querySelectorAll('form[data-form]').forEach(form => {
+  const key = `form-${form.name}`;
+
+  // Restaurar datos
+  const saved = sessionStorage.getItem(key);
+  if (saved) {
+    const data = JSON.parse(saved);
+
+    Object.entries(data).forEach(([name, value]) => {
+      const field = form.elements[name];
+      if (field && field.type !== "hidden") {
+        field.value = value;
+      }
+    });
+  }
+
+  // Guardar datos mientras el usuario escribe
+  form.addEventListener("input", () => {
+    const data = {};
+
+    Array.from(form.elements).forEach(field => {
+      if (
+        field.name &&
+        field.type !== "hidden" &&
+        field.type !== "submit" &&
+        field.type !== "button"
+      ) {
+        data[field.name] = field.value;
+      }
+    });
+
+    sessionStorage.setItem(key, JSON.stringify(data));
+  });
+
+  // Si el formulario se envía correctamente, limpiar los datos guardados
+  form.addEventListener("submit", () => {
+    sessionStorage.removeItem(key);
+  });
+
+
 const msg = form.querySelector('.message');
 const clear = form.querySelector('[data-clear]');
 
