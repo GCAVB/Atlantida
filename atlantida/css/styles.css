@@ -13,67 +13,17 @@ a { color:inherit; text-decoration:none; }
 .container { width:min(1100px,92%); margin:auto; }
 
 /* Cabecera fija superior y navegación principal. */
-.header { background:var(--blanco); box-shadow:var(--sombra); position:sticky; top:0; z-index:10; }
-
-/* .nav { 
-  display:flex; 
-  align-items:center; 
-  justify-content:center;
-  padding:14px 0; 
-  position:relative;
-} */
-
-.nav { 
-  display:grid; 
-  grid-template-columns:180px 1fr auto;
-  align-items:center; 
-  gap:24px;
-  padding:14px 0; 
-}
-
-.brand-box {
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  min-width:180px;
-}
-
-.menu-box {
-  display:flex;
-  justify-content:center;
-  min-width:0;
-}
-
-
-.brand { 
-  display:flex; 
-  align-items:center; 
-  gap:10px; 
-  font-weight:800; 
-  color:var(--azul); 
-  font-size:1.35rem; 
-}
-
-/* .brand { display:flex; align-items:center; gap:0px; font-weight:800; color:var(--azul); font-size:1.35rem; } */
-
-.brand-img, .logo { width:auto; min-width: 70px; height:46px; border-radius:25%; }
-
-
+.header { background:var(--blanco); box-shadow:var(--sombra); position:sticky; top:0; z-index:10;}
+.nav { display:grid; grid-template-columns:180px 1fr auto; align-items:center; gap:24px; padding:14px 0;}
+.brand-box { display:flex; align-items:center; justify-content:flex-start; min-width:180px;}
+.menu-box { display:flex; justify-content:center; min-width:0;}
+.brand { display:flex; align-items:center; gap:10px; font-weight:800; color:var(--azul); font-size:1.35rem;}
+.brand-img, .logo { width:auto; min-width: 70px; height:46px; border-radius:25%;}
 .brand-img { object-fit:contain; }
 .logo { background:var(--azul); color:white; display:grid; place-items:center; font-weight:bold; }
 
 /* Menú principal y estado activo de la página actual. */
-/* .menu { display:flex; gap:16px; list-style:none; align-items:center; justify-content:center;} */
-
-.menu { 
-  display:flex; 
-  gap:16px; 
-  list-style:none; 
-  align-items:center;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
+.menu { display:flex; gap:16px; list-style:none; align-items:center; justify-content:center; flex-wrap:wrap;}
 .menu a { padding:8px 10px; border-radius:8px; font-weight:600; }
 .menu a:hover, .menu a.active { background:var(--celeste); color:var(--azul); }
 .hamburger { display:none; background:var(--azul); color:var(--blanco); border:none; padding:8px 12px; border-radius:8px; font-size: 1.5rem; cursor:pointer; place-items:center;}
@@ -125,54 +75,16 @@ a { color:inherit; text-decoration:none; }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline:3px solid var(--azul-claro); outline-offset:3px; }
 
 /* Responsive: transforma el menú horizontal en menú hamburguesa en pantallas pequeñas y respeta hidden para lectores de pantalla. */
-/* @media (max-width:820px) { .hamburger { display:block; } .menu { position:absolute; left:0; right:0; top:74px; background:white; flex-direction:column; padding:16px; box-shadow:var(--sombra); } .menu[hidden] { display:none; } .menu.open { display:flex; } .menu a { width:100%; text-align:center; } } */
-
 
 @media (max-width:820px) { 
-  .nav {
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-
-  .brand {
-    margin:0 auto;
-    justify-content:center;
-  }
-
-  .hamburger {
-    display:block;
-    position:absolute;
-    right:0;
-    width: 50px;
-  }
-
-  .menu {
-    position:absolute;
-    left:0;
-    right:0;
-    top:74px;
-    background:white;
-    flex-direction:column;
-    padding:16px;
-    box-shadow:var(--sombra);
-  }
-
-  .menu[hidden] {
-    display:none;
-  }
-
-  .menu.open {
-    display:flex;
-  }
-
-  .menu a {
-    width:100%;
-    text-align:center;
-  }
+  .nav {position:relative; display:flex; align-items:center; justify-content:center;}
+  .brand {margin:0 auto; justify-content:center;}
+  .hamburger {display:block; position:absolute; right:0; width: 50px;}
+  .menu {position:absolute; left:0; right:0; top:74px; background:white; flex-direction:column; padding:16px; box-shadow:var(--sombra);}
+  .menu[hidden] { display:none;}
+  .menu.open {display:flex;}
+  .menu a {width:100%; text-align:center;}
 }
-
 
 /* Submenús jerárquicos para Servicios, Libros y Resúmenes. */
 .has-submenu { position:relative; }
