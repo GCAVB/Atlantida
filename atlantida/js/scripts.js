@@ -175,4 +175,43 @@ form.addEventListener('submit', event => {
 });
 
 });
+}
+);
+document.addEventListener("input", (e) => {
+  const form = e.target.closest("form[data-form]");
+  if (!form) return;
+
+  const key = "form-" + form.name;
+
+  const data = {};
+
+  form.querySelectorAll("input, textarea, select").forEach(el => {
+    if (el.name && el.type !== "submit" && el.type !== "button" && el.type !== "hidden") {
+      data[el.name] = el.value;
+    }
+  });
+
+  sessionStorage.setItem(key, JSON.stringify(data));
+});
+
+window.addEventListener("load", () => {
+  document.querySelectorAll("form[data-form]").forEach(form => {
+    const key = "form-" + form.name;
+
+    const saved = sessionStorage.getItem(key);
+    if (!saved) return;
+
+    try {
+      const data = JSON.parse(saved);
+
+      Object.entries(data).forEach(([name, value]) => {
+        const field = form.elements[name];
+        if (field && field.type !== "hidden") {
+          field.value = value;
+        }
+      });
+    } catch (e) {
+      console.warn("Error restaurando formulario", e);
+    }
+  });
 });
