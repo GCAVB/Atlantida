@@ -34,16 +34,24 @@ const menuGroups = [
 ];
 
 function createElement(tag, options) {
-options = options || {};
-const element = document.createElement(tag);
-if (options.className) element.className = options.className;
-if (options.text) element.textContent = options.text;
-if (options.attributes) {
-Object.entries(options.attributes).forEach(function ([name, value]) {
-element.setAttribute(name, value);
-});
-}
-return element;
+  options = options || {};
+  const element = document.createElement(tag);
+
+  if (options.className) element.className = options.className;
+
+  if (options.html) {
+    element.innerHTML = options.html;
+  } else if (options.text) {
+    element.textContent = options.text;
+  }
+
+  if (options.attributes) {
+    Object.entries(options.attributes).forEach(function ([name, value]) {
+      element.setAttribute(name, value);
+    });
+  }
+
+  return element;
 }
 
 function buildMenuItem(item) {
@@ -98,16 +106,30 @@ headerMount.appendChild(header);
 }
 
 if (footerMount) {
-footerMount.replaceChildren();
-const footer = createElement('footer', { className: 'footer' });
-const grid = createElement('div', { className: 'container grid' });
-['Atlántida', 'Atlantida', 'Enlaces rápidos'].forEach(function (title, index) {
-const column = document.createElement('div');
-const text = index === 0 ? 'Impresiones, fotocopias, digitalización y material académico digital.' : index === 1 ? 'Fotocopiadora Atlantida servicios de calidad.' : 'Inicio · Servicios · Papeo · Libros · Resúmenes · Cotizaciones · Contacto';
-column.append(createElement('h3', { text: title }), createElement('p', { text: text }));
-grid.appendChild(column);
-});
-footer.appendChild(grid);
-footerMount.appendChild(footer);
+  footerMount.replaceChildren();
+
+  const footer = createElement('footer', { className: 'footer' });
+  const grid = createElement('div', { className: 'container grid' });
+
+  const direccion = document.createElement('div');
+  direccion.append(
+  createElement('h3', {
+    html: '<img class="footer-icon" src="' + assetPath('images/iconos/mapa.png') + '" alt="Ubicación"> Dirección'
+  }),
+  createElement('p', {
+    html: 'Av. Víctor Jara #3570, Estación Central. <br>a pasos del metro <img class="footer-icon" src="' + assetPath('images/iconos/metro-chile.png') + '" alt="Metro de Santiago"> Universidad de Santiago.<br> Fotocopiadora Atlántida.'
+  })
+);
+
+  const horario = document.createElement('div');
+  horario.append(
+    createElement('h3', { text: 'Horario' }),
+    createElement('p', { text: 'Lunes a viernes de 9:00 a 17:00 Hr.' })
+  );
+
+  grid.append(direccion, horario);
+  footer.appendChild(grid);
+  footerMount.appendChild(footer);
 }
+
 });
