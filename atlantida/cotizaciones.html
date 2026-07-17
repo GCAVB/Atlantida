@@ -13,33 +13,30 @@
     <section class="hero">
       <div class="container">
         <h1>Cotizaciones</h1>
-        <p>Solicita una cotización para impresiones, fotocopias o digitalización.</p>
+        <p>Calcula el valor estimado de fotocopias, impresiones o digitalización según la cantidad de páginas.</p>
       </div>
     </section>
     <section class="section">
       <div class="container">
-        <h2>Formulario de cotización</h2>
-        
-          <form class="form" data-form="cotizacion" name="cotizacion" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="cotizacion">
-          <input type="hidden" name="_template" value="table">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-          <label>Nombre<input type="text" name="nombre" required></label>
-          <label>Correo<input type="email" name="correo" required></label>
-          <label>Servicio solicitado
-            <select name="servicio" required>
+        <h2>Calculadora de cotización</h2>
+        <p>Selecciona el servicio e ingresa la cantidad de páginas para obtener un precio referencial.</p>
+        <div class="form calculator" aria-label="Calculadora de cotización">
+          <label>Servicio
+            <select id="tipo-servicio" required>
               <option value="">Selecciona una opción</option>
-              <option value="Impresiones">Impresiones</option>
-              <option value="Fotocopias">Fotocopias</option>
-              <option value="Digitalización">Digitalización</option>
-              <option value="Material académico">Material académico</option>
+              <option value="fotocopiabn">Fotocopias Blanco y negro</option>
+              <option value="impresionbn">Impresiones Blanco y negro </option>
+              <option value="digitalizacionnor">Digitalización normal</option>
+              <option value="digitalizacionesp">Digitalización personalizada</option>
             </select>
           </label>
-          <label>Descripción de la solicitud<textarea name="mensaje" rows="6" minlength="40" required></textarea></label>
-          <div class="message" role="status" aria-live="polite"></div>
-          <button class="btn" type="submit">Enviar cotización</button>
-          <button class="btn secondary" type="button" data-clear>Limpiar</button>
-        </form>
+          <label id="label-lado-hoja" hidden>Lado de la hoja<select id="lado-hoja"><option value="unlado">Un lado de la hoja</option><option value="amboslados">Ambos lados de la hoja</option></select></label>
+          <label id="label-anillado" hidden>Anillado<select id="tipo-anillado"><option value="sin" selected>Sin anillado</option><option value="con">Con anillado</option></select></label>
+          <label>Cantidad de páginas<input id="cantidad-paginas" type="number" min="1" step="1" inputmode="numeric" pattern="[0-9]*" placeholder="Ej: 120" required></label>
+          <button class="btn" type="button" id="calcular-cotizacion">Calcular</button>
+          <div class="message" id="resultado-cotizacion" role="status" aria-live="polite"></div>
+        </div>
+
       </div>
     </section>
   </main>

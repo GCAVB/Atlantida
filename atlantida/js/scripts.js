@@ -136,4 +136,108 @@ form.addEventListener('submit', event => {
 });
 
 });
+const esImpresionOFotocopia = tipo => tipo === 'fotocopiabn' || tipo === 'impresionbn';
+const calcularCotizacionBase = (tipo, paginas) => {
+  if (tipo === 'fotocopiabn') {
+    if (paginas >= 2 && paginas <= 49) return paginas * 50;
+    if (paginas >= 50 && paginas <= 199) return paginas * 45;
+    if (paginas >= 200) return paginas * 40;
+  }
+  if (tipo === 'impresionbn') {
+    if (paginas >= 2 && paginas <= 199) return paginas * 45;
+    if (paginas >= 200 && paginas <= 499) return paginas * 40;
+    if (paginas >= 500) return paginas * 35;
+  }
+  if (tipo === 'digitalizacionnor') {
+    if (paginas >= 1 && paginas <= 99) return paginas * 100;
+    if (paginas >= 100) return paginas * 70;
+  }
+  if (tipo === 'digitalizacionesp') {
+    if (paginas >= 1 && paginas <= 99) return paginas * 120;
+    if (paginas >= 100) return paginas * 100;
+  }
+  return null;
+};
+const calcularAnillado = (paginas, ladoHoja) => {
+  if (ladoHoja === 'unlado') {
+    if (paginas >= 1 && paginas <= 70) return 1200;
+    if (paginas >= 71 && paginas <= 150) return 1600;
+    if (paginas >= 151 && paginas <= 300) return 2000;
+    if (paginas >= 301 && paginas <= 450) return 2600;
+    if (paginas >= 451) return 'Requiere mas de un anillado';
+  }
+  if (ladoHoja === 'amboslados') {
+    if (paginas >= 2 && paginas <= 140) return 1200;
+    if (paginas >= 141 && paginas <= 300) return 1600;
+    if (paginas >= 301 && paginas <= 600) return 2000;
+    if (paginas >= 601 && paginas <= 900) return 2600;
+    if (paginas >= 901) return 'Requiere mas de un anillado';
+  }
+  return null;
+};
+const actualizarOpcionesExtra = () => {
+  const tipo = document.querySelector('#tipo-servicio');
+  const labelLado = document.querySelector('#label-lado-hoja');
+  const labelAnillado = document.querySelector('#label-anillado');
+  const mostrar = tipo && esImpresionOFotocopia(tipo.value);
+  if (labelLado) labelLado.hidden = !mostrar;
+  if (labelAnillado) labelAnillado.hidden = !mostrar;
+  if (!mostrar) {
+    const anillado = document.querySelector('#tipo-anillado');
+    if (anillado) anillado.value = 'sin';
+  }
+};
+
+const calcularBtn = document.querySelector('#calcular-cotizacion');
+  const tipoServicio = document.querySelector('#tipo-servicio');
+  actualizarOpcionesExtra();
+  if (tipoServicio) tipoServicio.addEventListener('change', actualizarOpcionesExtra);
+
+    const cantidadPaginas = document.querySelector('#cantidad-paginas');
+  if (cantidadPaginas) {
+    cantidadPaginas.addEventListener('input', () => {
+      cantidadPaginas.value = cantidadPaginas.value.replace(/\D/g, '');
+    });
+  }
+  if (cantidadPaginas) cantidadPaginas.addEventListener('keydown', event => {
+    if (['e', 'E', '+', '-', '.', ','].includes(event.key)) event.preventDefault();
+  });
+
+
+if (calcularBtn) {
+  calcularBtn.addEventListener('click', () => {
+    const tipo = document.querySelector('#tipo-servicio');
+    const paginasInput = document.querySelector('#cantidad-paginas');
+    const ladoHoja = document.querySelector('#lado-hoja');
+    const tipoAnillado = document.querySelector('#tipo-anillado');
+    const resultado = document.querySelector('#resultado-cotizacion');
+    const paginas = paginasInput.value.trim() === '' ? NaN : Number(paginasInput.value);
+    if (!tipo.value || !Number.isInteger(paginas) || paginas < 1 || String(paginas) !== paginasInput.value.trim()) {
+      showMessage(resultado, 'Selecciona un servicio e ingresa un número entero de páginas.', 'error');
+      return;
+    }
+
+       let total = esImpresionOFotocopia(tipo.value) && ladoHoja.value === 'unlado' ? paginas * 50 : calcularCotizacionBase(tipo.value, paginas);
+    
+    if (total === null) {
+      showMessage(resultado, 'La cantidad ingresada no tiene tarifa disponible para este servicio.', 'error');
+      return;
+    }
+       if (esImpresionOFotocopia(tipo.value) && tipoAnillado.value === 'con') {
+      const valorAnillado = calcularAnillado(paginas, ladoHoja.value);
+      if (typeof valorAnillado === 'string') {
+        showMessage(resultado, valorAnillado, 'error');
+        return;
+      }
+      total += valorAnillado;
+    }
+
+    if (total === null) {
+      showMessage(resultado, 'La cantidad ingresada no tiene tarifa disponible para este servicio.', 'error');
+      return;
+    }
+    showMessage(resultado, `Total estimado: $${total.toLocaleString('es-CL')}`, 'ok');
+  });
+}
+
 });
